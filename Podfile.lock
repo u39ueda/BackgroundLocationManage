@@ -1,0 +1,47 @@
+PODS:
+  - GoogleMaps (3.9.0):
+    - GoogleMaps/Maps (= 3.9.0)
+  - GoogleMaps/Base (3.9.0)
+  - GoogleMaps/Maps (3.9.0):
+    - GoogleMaps/Base
+  - GooglePlaces (3.9.0):
+    - GoogleMaps/Base (= 3.9.0)
+  - ObjcExceptionBridging (1.0.1):
+    - ObjcExceptionBridging/ObjcExceptionBridging (= 1.0.1)
+  - ObjcExceptionBridging/ObjcExceptionBridging (1.0.1)
+  - Realm (5.0.1):
+    - Realm/Headers (= 5.0.1)
+  - Realm/Headers (5.0.1)
+  - RealmSwift (5.0.1):
+    - Realm (= 5.0.1)
+  - XCGLogger (7.0.1):
+    - XCGLogger/Core (= 7.0.1)
+  - XCGLogger/Core (7.0.1):
+    - ObjcExceptionBridging
+
+DEPENDENCIES:
+  - GoogleMaps (~> 3.9.0)
+  - GooglePlaces (~> 3.9.0)
+  - RealmSwift (~> 5.0.1)
+  - XCGLogger (~> 7.0.1)
+
+SPEC REPOS:
+  trunk:
+    - GoogleMaps
+    - GooglePlaces
+    - ObjcExceptionBridging
+    - Realm
+    - RealmSwift
+    - XCGLogger
+
+SPEC CHECKSUMS:
+  GoogleMaps: 4b5346bddfe6911bb89155d43c903020170523ac
+  GooglePlaces: 1634d019549b969d40fe0ccb0b9513055adebe01
+  ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
+  Realm: d36cfc336d76d2e15b13651beb6050f49354de4b
+  RealmSwift: f29ae0ceaf4fbaf4803c40bbebd838ea2beb903a
+  XCGLogger: 1943831ef907df55108b0b18657953f868de973b
+
+PODFILE CHECKSUM: 34752b95d58cb99dc4d0c5d9a6a358e97aad4a49
+
+COCOAPODS: 1.9.3
