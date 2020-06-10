@@ -71,15 +71,9 @@ final class LocationManager {
     }
 }
 
-private class LocationManagerProxy: NSObject {
-
-    weak var owner: LocationManager?
-
-}
-
 // MARK: CLLocationManagerDelegate
 
-extension LocationManagerProxy: CLLocationManagerDelegate {
+extension LocationManager {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .notDetermined:
@@ -92,7 +86,7 @@ extension LocationManagerProxy: CLLocationManagerDelegate {
             log.info("authorizedAlways")
         case .authorizedWhenInUse:
             log.info("authorizedWhenInUse")
-            owner?.startUpdate()
+            self.startUpdate()
         @unknown default:
             log.info("unknown. status=\(status.rawValue)")
         }
@@ -112,5 +106,35 @@ extension LocationManagerProxy: CLLocationManagerDelegate {
 
     func locationManagerDidResumeLocationUpdates(_ manager: CLLocationManager) {
         log.info("位置情報レジューム")
+    }
+}
+
+private class LocationManagerProxy: NSObject {
+
+    weak var owner: LocationManager?
+
+}
+
+// MARK: CLLocationManagerDelegate
+
+extension LocationManagerProxy: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        owner?.locationManager(manager, didChangeAuthorization: status)
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        owner?.locationManager(manager, didUpdateLocations: locations)
+    }
+
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        owner?.locationManager(manager, didFailWithError: error)
+    }
+
+    func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
+        owner?.locationManagerDidPauseLocationUpdates(manager)
+    }
+
+    func locationManagerDidResumeLocationUpdates(_ manager: CLLocationManager) {
+        owner?.locationManagerDidResumeLocationUpdates(manager)
     }
 }
