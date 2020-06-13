@@ -45,11 +45,8 @@ class DateListViewController: UITableViewController {
 
         if let dataSource = self.dataSource {
             let rowData = dataSource.rowData(at: indexPath)
-            let latlon = String(format: "%.4lf, %.4lf", rowData.latitude, rowData.longitude)
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .short
-            dateFormatter.timeStyle = .medium
-            cell.textLabel?.text = "\(latlon) - \(dateFormatter.string(from: rowData.createdDate))"
+            cell.textLabel?.text = rowData.dateYmd
+            cell.detailTextLabel?.text = "\(rowData.count)"
         }
 
         return cell
@@ -122,5 +119,8 @@ extension DateListViewController: DateListViewProtocol {
     func reloadRows(_ indexPaths: [IndexPath]) {
         guard !indexPaths.isEmpty else { return }
         tableView.reloadRows(at: indexPaths, with: .automatic)
+    }
+    func reloadData() {
+        tableView.reloadData()
     }
 }

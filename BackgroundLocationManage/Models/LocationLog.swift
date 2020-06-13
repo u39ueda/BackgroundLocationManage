@@ -94,6 +94,17 @@ class LocationLog: Object {
         return ["timestamp"]
     }
 
+    // MARK: Methods
+
+    /// 位置情報を保存した日付をYYYYMMDDの文字列で返す
+    func createdDateYmd(timeZone: TimeZone) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = timeZone
+        formatter.dateFormat = "yyyyMMdd"
+        return formatter.string(from: createdDate)
+    }
+
 }
 
 extension KeyPath where Root == LocationLog {
