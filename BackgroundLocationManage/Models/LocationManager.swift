@@ -12,10 +12,13 @@ import CoreLocation
 final class LocationManager {
     private let locationManager = CLLocationManager()
     private let proxy = LocationManagerProxy()
+    private let locationLogRepository: LocationLogRepository
 
     public static let shared = LocationManager()
 
-    init() {
+    init(locationLogRepository: LocationLogRepository = .shared) {
+        self.locationLogRepository = locationLogRepository
+
         /// 循環参照を避けるためにdelegateは自身ではなくProxyオブジェクトを経由する
         self.proxy.owner = self
         self.locationManager.delegate = self.proxy
@@ -44,7 +47,6 @@ final class LocationManager {
         }
         log.info()
         self.locationManager.startUpdatingLocation()
-        startMonitoringSignificantLocationChanges()
     }
 
     func stopUpdate() {
@@ -53,6 +55,11 @@ final class LocationManager {
     }
 
     func startMonitoringSignificantLocationChanges() {
+        if CLLocationManager.authorizationStatus() == .notDetermined {
+            log.info("requestAlwaysAuthorization()")
+            self.locationManager.requestAlwaysAuthorization()
+            return
+        }
         if !CLLocationManager.significantLocationChangeMonitoringAvailable() {
             log.info("significantLocationChangeMonitoringAvailable unailable")
             return
@@ -84,6 +91,7 @@ extension LocationManager {
             log.info("denied")
         case .authorizedAlways:
             log.info("authorizedAlways")
+            self.startUpdate()
         case .authorizedWhenInUse:
             log.info("authorizedWhenInUse")
             self.startUpdate()
@@ -94,10 +102,12 @@ extension LocationManager {
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         log.info("位置情報更新. locations=\(locations)")
+        locationLogRepository.insert(locations: locations)
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         log.info("位置情報失敗. error=\(error)")
+        locationLogRepository.insert(error: error)
     }
 
     func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {

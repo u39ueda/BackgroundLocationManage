@@ -8,39 +8,52 @@
 
 import UIKit
 
+private let reuseIdentifier = "Cell"
+
 class DateListViewController: UITableViewController {
+
+    private var dataSource: DateListDataSource?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+
+        self.dataSource = DateListDataSource()
+        self.dataSource?.view = self
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        guard let dataSource = self.dataSource else {
+            return 0
+        }
+        return dataSource.numberOfSections()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        guard let dataSource = self.dataSource else {
+            return 0
+        }
+        return dataSource.numberOfRows(inSection: section)
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
 
-        // Configure the cell...
+        if let dataSource = self.dataSource {
+            let rowData = dataSource.rowData(at: indexPath)
+            let latlon = String(format: "%.4lf, %.4lf", rowData.latitude, rowData.longitude)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .short
+            dateFormatter.timeStyle = .medium
+            cell.textLabel?.text = "\(latlon) - \(dateFormatter.string(from: rowData.createdDate))"
+        }
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -87,4 +100,27 @@ class DateListViewController: UITableViewController {
     }
     */
 
+}
+
+// MARK: - DateListViewController
+
+extension DateListViewController: DateListViewProtocol {
+    func update(_ block: () -> Void) {
+        tableView.beginUpdates()
+        block()
+        tableView.endUpdates()
+    }
+
+    func deleteRows(_ indexPaths: [IndexPath]) {
+        guard !indexPaths.isEmpty else { return }
+        tableView.deleteRows(at: indexPaths, with: .none)
+    }
+    func insertRows(_ indexPaths: [IndexPath]) {
+        guard !indexPaths.isEmpty else { return }
+        tableView.insertRows(at: indexPaths, with: .none)
+    }
+    func reloadRows(_ indexPaths: [IndexPath]) {
+        guard !indexPaths.isEmpty else { return }
+        tableView.reloadRows(at: indexPaths, with: .automatic)
+    }
 }

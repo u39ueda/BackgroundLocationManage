@@ -19,6 +19,9 @@
 		0B8870B2248538B7009E8E91 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8870B1248538B7009E8E91 /* MapViewController.swift */; };
 		0B8870B624853FA2009E8E91 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8870B524853FA2009E8E91 /* LocationManager.swift */; };
 		0B8870B82485434F009E8E91 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8870B72485434F009E8E91 /* Logger.swift */; };
+		0BC137FA249131C60073D0E1 /* LocationLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC137F9249131C60073D0E1 /* LocationLog.swift */; };
+		0BC137FC24913BA10073D0E1 /* LocationLogRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC137FB24913BA10073D0E1 /* LocationLogRepository.swift */; };
+		0BC137FE2494DE120073D0E1 /* DateListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC137FD2494DE120073D0E1 /* DateListDataSource.swift */; };
 		0F1759C9BA7319AC49EFD738 /* Pods_BackgroundLocationManage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C42610E28E0099EC0BD577 /* Pods_BackgroundLocationManage.framework */; };
 		55401E8C8BAACD5630F724D5 /* Pods_BackgroundLocationManage_BackgroundLocationManageUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF32452BF6A53E1D9EC90725 /* Pods_BackgroundLocationManage_BackgroundLocationManageUITests.framework */; };
 		EDD56CA3CFE5EE62932E3DFF /* Pods_BackgroundLocationManageTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18482EC29F2B73AA06EF31F0 /* Pods_BackgroundLocationManageTests.framework */; };
@@ -60,6 +63,9 @@
 		0B8870B1248538B7009E8E91 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0B8870B524853FA2009E8E91 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		0B8870B72485434F009E8E91 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		0BC137F9249131C60073D0E1 /* LocationLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLog.swift; sourceTree = "<group>"; };
+		0BC137FB24913BA10073D0E1 /* LocationLogRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLogRepository.swift; sourceTree = "<group>"; };
+		0BC137FD2494DE120073D0E1 /* DateListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateListDataSource.swift; sourceTree = "<group>"; };
 		18482EC29F2B73AA06EF31F0 /* Pods_BackgroundLocationManageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BackgroundLocationManageTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39F1A33F4508C37249F1255B /* Pods-BackgroundLocationManage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BackgroundLocationManage.debug.xcconfig"; path = "Target Support Files/Pods-BackgroundLocationManage/Pods-BackgroundLocationManage.debug.xcconfig"; sourceTree = "<group>"; };
 		48BF1EBCC180EB4A7AFCDFCE /* Pods-BackgroundLocationManage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BackgroundLocationManage.release.xcconfig"; path = "Target Support Files/Pods-BackgroundLocationManage/Pods-BackgroundLocationManage.release.xcconfig"; sourceTree = "<group>"; };
@@ -183,8 +189,11 @@
 		0B8870B424853F80009E8E91 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0BC137FD2494DE120073D0E1 /* DateListDataSource.swift */,
+				0BC137F9249131C60073D0E1 /* LocationLog.swift */,
 				0B8870B524853FA2009E8E91 /* LocationManager.swift */,
 				0B8870B72485434F009E8E91 /* Logger.swift */,
+				0BC137FB24913BA10073D0E1 /* LocationLogRepository.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -489,11 +498,14 @@
 			files = (
 				0B8870AC2485359A009E8E91 /* DateListViewController.swift in Sources */,
 				0B8870AE248535B3009E8E91 /* LocationListViewController.swift in Sources */,
+				0BC137FC24913BA10073D0E1 /* LocationLogRepository.swift in Sources */,
 				0B8870B624853FA2009E8E91 /* LocationManager.swift in Sources */,
 				0B88707C24853329009E8E91 /* AppDelegate.swift in Sources */,
 				0B8870B82485434F009E8E91 /* Logger.swift in Sources */,
 				0B8870B2248538B7009E8E91 /* MapViewController.swift in Sources */,
 				0B88707E24853329009E8E91 /* SceneDelegate.swift in Sources */,
+				0BC137FE2494DE120073D0E1 /* DateListDataSource.swift in Sources */,
+				0BC137FA249131C60073D0E1 /* LocationLog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
