@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B1EE6E124AA38EF005FE079 /* LocationListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1EE6E024AA38EF005FE079 /* LocationListDataSource.swift */; };
 		0B88707C24853329009E8E91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88707B24853329009E8E91 /* AppDelegate.swift */; };
 		0B88707E24853329009E8E91 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88707D24853329009E8E91 /* SceneDelegate.swift */; };
 		0B88708324853329009E8E91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B88708124853329009E8E91 /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B1EE6E024AA38EF005FE079 /* LocationListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListDataSource.swift; sourceTree = "<group>"; };
 		0B88707824853329009E8E91 /* BackgroundLocationManage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackgroundLocationManage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B88707B24853329009E8E91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B88707D24853329009E8E91 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -190,10 +192,11 @@
 			isa = PBXGroup;
 			children = (
 				0BC137FD2494DE120073D0E1 /* DateListDataSource.swift */,
+				0B1EE6E024AA38EF005FE079 /* LocationListDataSource.swift */,
 				0BC137F9249131C60073D0E1 /* LocationLog.swift */,
+				0BC137FB24913BA10073D0E1 /* LocationLogRepository.swift */,
 				0B8870B524853FA2009E8E91 /* LocationManager.swift */,
 				0B8870B72485434F009E8E91 /* Logger.swift */,
-				0BC137FB24913BA10073D0E1 /* LocationLogRepository.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -500,6 +503,7 @@
 				0B8870AE248535B3009E8E91 /* LocationListViewController.swift in Sources */,
 				0BC137FC24913BA10073D0E1 /* LocationLogRepository.swift in Sources */,
 				0B8870B624853FA2009E8E91 /* LocationManager.swift in Sources */,
+				0B1EE6E124AA38EF005FE079 /* LocationListDataSource.swift in Sources */,
 				0B88707C24853329009E8E91 /* AppDelegate.swift in Sources */,
 				0B8870B82485434F009E8E91 /* Logger.swift in Sources */,
 				0B8870B2248538B7009E8E91 /* MapViewController.swift in Sources */,

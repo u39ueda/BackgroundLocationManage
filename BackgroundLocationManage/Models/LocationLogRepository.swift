@@ -46,4 +46,17 @@ class LocationLogRepository {
         return realm.objects(LocationLog.self)
             .sorted(by: descriptors)
     }
+
+    func fetchList(from fromDate: Date, to toDate: Date) -> Results<LocationLog> {
+        log.info("from=\(fromDate), to=\(toDate)")
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "%K BETWEEN %@", (\LocationLog.createdDate).stringValue, [fromDate, toDate])
+        let descriptors: [SortDescriptor] = [
+            SortDescriptor(keyPath: (\LocationLog.createdDate).stringValue),
+            SortDescriptor(keyPath: (\LocationLog.timestamp).stringValue),
+        ]
+        return realm.objects(LocationLog.self)
+            .filter(predicate)
+            .sorted(by: descriptors)
+    }
 }
