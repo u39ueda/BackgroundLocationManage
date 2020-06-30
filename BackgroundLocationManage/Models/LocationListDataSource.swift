@@ -10,6 +10,10 @@ import Foundation
 import RealmSwift
 
 protocol LocationListViewProtocol: class {
+    func deleteLocations(_ indexes: [Int])
+    func insertLocations(_ indexes: [Int])
+    func reloadLocations(_ indexes: [Int])
+    func reloadLocations()
     func reloadData()
 }
 
@@ -44,6 +48,7 @@ class LocationListDataSource {
                 self.locationList = locationList
 
                 self.view?.reloadData()
+                self.view?.reloadLocations()
             }
         case let .update(result, deletions, insertions, modifications):
             log.info("LocationList updated. deletions=\(deletions), insertions=\(insertions), modifications=\(modifications)")
@@ -53,6 +58,10 @@ class LocationListDataSource {
                 self.locationList = locationList
 
                 self.view?.reloadData()
+                // refresh markers
+                self.view?.deleteLocations(deletions)
+                self.view?.insertLocations(insertions)
+                self.view?.reloadLocations(modifications)
             }
         case let .error(error):
             log.info("LocationList error. \(error)")

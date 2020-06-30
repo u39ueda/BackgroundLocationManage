@@ -137,6 +137,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="RnY-4d-4Ij"/>
                     <connections>
+                        <outlet property="mapContainerView" destination="8lG-4H-Qo0" id="zQn-37-H82"/>
                         <outlet property="tableBottomConstraint" destination="VIz-bq-eGf" id="IYA-oS-kJX"/>
                         <outlet property="tableView" destination="bbI-W9-4ax" id="cdk-zw-qIO"/>
                     </connections>

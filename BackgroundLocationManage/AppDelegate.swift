@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,8 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        log.info("launchOptions=\(launchOptions?.debugDescription ?? "nil")")
 
-        locationManager.startUpdate()
+        let mapApiKey = "AIzaSyBW0EOM_0yqnk3OklaQEo4yJBUm_gbGfHA"
+        GMSServices.provideAPIKey(mapApiKey)
+
+        if launchOptions?[.location] is NSNumber {
+            locationManager.startMonitoringSignificantLocationChanges()
+        } else {
+            locationManager.startUpdate()
+        }
 
         return true
     }
